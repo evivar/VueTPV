@@ -3,11 +3,11 @@
     <v-container fluid style="min-height: 100%">
       <v-row style="min-height: 100%">
         <v-col sm="4">
-          <v-sheet rounded="lg" min-height="100%" class="d-flex flex-column align-stretch">
-            <div style="height: 56vh">
+          <v-sheet rounded="lg" min-height="100%" class="d-flex flex-column align-stretch" style="border: solid 1px blue">
+            <div style="max-height: 56vh;height: 56vh;border: solid 1px white">
 
             </div>
-            <div style="height: 40vh">
+            <div style="max-height: 40vh; height: 40vh;border: solid 1px white">
 
             </div>
           </v-sheet>
@@ -19,12 +19,10 @@
             min-height="100%"
             id="rightPanel"
             class="d-flex flex-column align-stretch"
+            style="border: solid 1px blue"
           >
-            <div style="max-height: 48vh">
+            <div id="productDiv" style="max-height: 96vh; height: 100vh; border: solid 1px white" >
               <products></products>
-            </div>
-            <div style="height: 48vh">
-
             </div>
           </v-sheet>
         </v-col>
