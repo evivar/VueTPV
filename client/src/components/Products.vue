@@ -1,22 +1,19 @@
 <template>
-  <v-card style="height: -webkit-fill-available;">
+  <v-card style="height: -webkit-fill-available">
     <v-item-group>
       <v-container>
         <v-row>
-          <v-col v-for="n in 0" :key="n" cols="12" md="3">
-            <v-item v-slot="{ active, toggle }">
-              <v-card
-                :color="active ? 'primary' : ''"
-                class="d-flex align-center"
-                light
-                height="200"
-                @click="toggle"
-              >
-                <v-scroll-y-transition>
-                  <div v-if="active" class="display-3 flex-grow-1 text-center">
-                    Active
-                  </div>
-                </v-scroll-y-transition>
+          <v-col
+            v-for="product in products"
+            :key="product._id"
+            cols="12"
+            md="3"
+          >
+            <v-item>
+              <v-card class="d-flex align-center" light height="200">
+                <v-card-text class="text-center">{{
+                  product.name
+                }}</v-card-text>
               </v-card>
             </v-item>
           </v-col>
@@ -28,17 +25,14 @@
       <v-container>
         <v-row>
           <v-col
-            v-for="category in categories"
-            :key="category.name"
+            v-for="category in childrenCategories"
+            :key="category._id"
             cols="12"
             md="3"
+            @click="categoryClick(category)"
           >
             <v-item>
-              <v-card
-                class="d-flex align-center"
-                light
-                height="200"
-              >
+              <v-card class="d-flex align-center" light height="200">
                 <v-card-text class="text-center">{{
                   category.name
                 }}</v-card-text>
@@ -47,6 +41,14 @@
           </v-col>
         </v-row>
       </v-container>
+
+      <v-btn
+        elevation="2"
+        fab
+        style="position: absolute; bottom: 2em; right: 2em"
+        color="purple"
+        @click="categoryUp()"
+      ></v-btn>
     </v-item-group>
   </v-card>
 </template>
@@ -54,12 +56,42 @@
 <script>
 export default {
   name: "Products",
+  created() {
+    this.$store.dispatch("getRootCategories");
+  },
+  computed: {
+    currentCateogry() {
+      return this.$store.getters.currentCateogry;
+    },
+    childrenCategories() {
+      return this.$store.getters.childrenCategories;
+    },
+    products() {
+      return this.$store.getters.products;
+    },
+  },
   data() {
     return {
-      categories: [{ name: "Todos" }, { name: "Desayunos" }]
+      categories: [{ name: "Todos" }, { name: "Desayunos" }],
     };
   },
-  methods: {}
+  methods: {
+    categoryClick(category) {
+      this.$store
+        .dispatch("getChildrenCategoriesByParentId", category)
+        .then(() => {
+          this.$store.dispatch("getProductsByCategoryId", category._id);
+        });
+    },
+
+    categoryUp() {
+      this.$store
+        .dispatch("getParentCategoriesByChildId", this.currentCateogry)
+        .then(() => {
+          this.$store.dispatch("getProductsByCategoryId", this.currentCateogry.parentId);
+        });
+    },
+  },
 };
 </script>
 

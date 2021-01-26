@@ -2,31 +2,86 @@ import Vue from 'vue';
 
 const state = {
 
-    currentCategories: [],
+    currentCateogry: {
+        status: null,
+        active: null,
+        _id: null,
+        parentId: null,
+        name: 'Root',
+        __v: null
+    },
+
+    childrenCategories: [],
+
+    products: [],
 
     categoryErrorMsg: '',
 
-    categoryErrorDialog: false
+    productErrorMsg: '',
+
+    categoryErrorDialog: false,
+    
+    productErrorDialog: false
 
 };
 
 const getters = {
-    currentCategories: (state) => { return state.currentCategories; }
+    currentCateogry: (state) => { return state.currentCateogry; },
+    childrenCategories: (state) => { return state.childrenCategories; },
+    products: (state) => { return state.products; }
 };
 
 const actions = {
 
-    async getRootCategories({ commit }) {
-        await Vue.axios.get('/category/readAllParentCategories').then((resp) => {
+    getRootCategories({ commit }) {
+        Vue.axios.get('/category/readAllParentCategories').then((resp) => {
             let data = resp.data;
             if (data.data) {
                 if ((data.data).some((category) => category.parentId)) {
                     commit('categoryError', 'Error processing parent categories')
                 } else {
-                    commit('setCategories', data.data);
+                    commit('setRootCategories', data.data);
                 }
             } else {
                 commit('categoryError', 'Error reading parent categories');
+            }
+        });
+    },
+
+    getChildrenCategoriesByParentId({commit}, category){
+        Vue.axios.post('/category/readAllChildrenCategoriesByParentId', {parentId: category._id}).then((resp) => {
+            let data = resp.data;
+            if(data.data){
+                data.category = category
+                commit('setCategories', data);
+            }
+            else{
+                commit('categoryError', 'Error reading children categories');
+            }
+        });
+    },
+
+    getParentCategoriesByChildId({commit}, category){
+        Vue.axios.post('/category/readAllChildrenCategoriesByParentId', {parentId: category.parentId}).then((resp) => {
+            let data = resp.data;
+            if(data.data){
+                data.category = category
+                commit('setCategories', data);
+            }
+            else{
+                commit('categoryError', 'Error reading children categories');
+            }
+        });
+    },
+
+    getProductsByCategoryId({commit}, categoryId){
+        Vue.axios.post('/product/readProductsByCategoryId', {categoryId: categoryId}).then((resp) => {
+            let data = resp.data;
+            if(data.data){
+                commit('setProducts', data.data);
+            }
+            else{
+                commit('productError', 'Error reading products from category');
             }
         });
     },
@@ -52,8 +107,19 @@ const actions = {
 
 const mutations = {
 
-    setCategories(state, categories) {
+    setRootCategories(state, categories) {
+        state.childrenCategories = categories;
+        state.currentCateogry.name = 'Root';
+        state.currentCateogry._id = null;
+    },
 
+    setCategories(state, data){
+        state.childrenCategories = data.data;
+        state.currentCateogry = data.category;
+    },
+
+    setProducts(state, products){
+        state.products = products;
     },
 
     loginUser(state, loginUser) {
