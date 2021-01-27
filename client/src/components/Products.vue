@@ -47,7 +47,7 @@
         fab
         style="position: absolute; bottom: 2em; right: 2em"
         color="purple"
-        @click="categoryUp()"
+        @click="home()"
       ></v-btn>
     </v-item-group>
   </v-card>
@@ -57,7 +57,9 @@
 export default {
   name: "Products",
   created() {
-    this.$store.dispatch("getRootCategories");
+    this.$store.dispatch("getRootCategories").then(() => {
+      this.$store.dispatch("getProductsByCategoryId", null);
+    });
   },
   computed: {
     currentCateogry() {
@@ -68,11 +70,11 @@ export default {
     },
     products() {
       return this.$store.getters.products;
-    },
+    }
   },
   data() {
     return {
-      categories: [{ name: "Todos" }, { name: "Desayunos" }],
+      categories: [{ name: "Todos" }, { name: "Desayunos" }]
     };
   },
   methods: {
@@ -84,14 +86,10 @@ export default {
         });
     },
 
-    categoryUp() {
-      this.$store
-        .dispatch("getParentCategoriesByChildId", this.currentCateogry)
-        .then(() => {
-          this.$store.dispatch("getProductsByCategoryId", this.currentCateogry.parentId);
-        });
-    },
-  },
+    home() {
+      this.$store.dispatch("getRootCategories");
+    }
+  }
 };
 </script>
 
