@@ -1,0 +1,181 @@
+[{
+  "_id": {
+    "$oid": "6000d4794e54eb50943da71d"
+  },
+  "description": "Refresco de Coca cola",
+  "stock": 10,
+  "active": false,
+  "categoryId": null,
+  "name": "Coca cola",
+  "price": 2.5,
+  "tax": 0.21,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6000d4ac4e54eb50943da71e"
+  },
+  "description": "Refresco de Coca cola Light",
+  "stock": 10,
+  "active": false,
+  "categoryId": null,
+  "name": "Coca cola Light",
+  "price": 2.5,
+  "tax": 0.21,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6000d4b74e54eb50943da71f"
+  },
+  "description": "Refresco de Coca cola Zero",
+  "stock": 5,
+  "active": false,
+  "categoryId": null,
+  "name": "Coca cola Zero",
+  "price": 2.25,
+  "tax": 0.21,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "601092de9f5c324870ab895f"
+  },
+  "description": "Tart - Pecan Butter Squares",
+  "stock": 65,
+  "active": true,
+  "status": true,
+  "categoryId": null,
+  "name": "Tart - Pecan Butter Squares",
+  "price": 55.3,
+  "tax": 0.21
+},{
+  "_id": {
+    "$oid": "601092de9f5c324870ab8960"
+  },
+  "description": "Lettuce - Curly Endive",
+  "stock": 10,
+  "active": true,
+  "status": true,
+  "categoryId": null,
+  "name": "Lettuce - Curly Endive",
+  "price": 22.12,
+  "tax": 0.21
+},{
+  "_id": {
+    "$oid": "601092de9f5c324870ab8961"
+  },
+  "description": "Ginsing - Fresh",
+  "stock": 47,
+  "active": true,
+  "status": true,
+  "categoryId": null,
+  "name": "Ginsing - Fresh",
+  "price": 613.68,
+  "tax": 0.21
+},{
+  "_id": {
+    "$oid": "601092de9f5c324870ab8962"
+  },
+  "description": "Pasta - Cappellini, Dry",
+  "stock": 68,
+  "active": true,
+  "status": true,
+  "categoryId": null,
+  "name": "Pasta - Cappellini, Dry",
+  "price": 813.01,
+  "tax": 0.21
+},{
+  "_id": {
+    "$oid": "601092de9f5c324870ab8963"
+  },
+  "description": "Creme De Banane - Marie",
+  "stock": 80,
+  "active": true,
+  "status": true,
+  "categoryId": null,
+  "name": "Creme De Banane - Marie",
+  "price": 29.12,
+  "tax": 0.21
+},{
+  "_id": {
+    "$oid": "601092de9f5c324870ab8964"
+  },
+  "description": "Tomatoes - Vine Ripe, Yellow",
+  "stock": 34,
+  "active": true,
+  "status": true,
+  "categoryId": null,
+  "name": "Tomatoes - Vine Ripe, Yellow",
+  "price": 458.83,
+  "tax": 0.21
+},{
+  "_id": {
+    "$oid": "601092de9f5c324870ab8965"
+  },
+  "description": "Pepper - Yellow Bell",
+  "stock": 51,
+  "active": true,
+  "status": true,
+  "categoryId": null,
+  "name": "Pepper - Yellow Bell",
+  "price": 71.51,
+  "tax": 0.21
+},{
+  "_id": {
+    "$oid": "601092de9f5c324870ab8966"
+  },
+  "description": "Bread - Onion Focaccia",
+  "stock": 64,
+  "active": true,
+  "status": true,
+  "categoryId": null,
+  "name": "Bread - Onion Focaccia",
+  "price": 53.14,
+  "tax": 0.21
+},{
+  "_id": {
+    "$oid": "601092de9f5c324870ab8967"
+  },
+  "description": "Fond - Neutral",
+  "stock": 17,
+  "active": true,
+  "status": true,
+  "categoryId": null,
+  "name": "Fond - Neutral",
+  "price": 0.19,
+  "tax": 0.21
+},{
+  "_id": {
+    "$oid": "601093189f5c324870ab8968"
+  },
+  "description": "Tomatoes - Orange",
+  "stock": 81,
+  "active": true,
+  "status": true,
+  "categoryId": null,
+  "name": "Tomatoes - Orange",
+  "price": 0.97,
+  "tax": 0.21
+},{
+  "_id": {
+    "$oid": "601093189f5c324870ab8969"
+  },
+  "description": "Chips Potato Swt Chilli Sour",
+  "stock": 47,
+  "active": true,
+  "status": true,
+  "categoryId": null,
+  "name": "Chips Potato Swt Chilli Sour",
+  "price": 685.85,
+  "tax": 0.21
+},{
+  "_id": {
+    "$oid": "601093189f5c324870ab896a"
+  },
+  "description": "Cucumber - Pickling Ontario",
+  "stock": 33,
+  "active": true,
+  "status": true,
+  "categoryId": null,
+  "name": "Cucumber - Pickling Ontario",
+  "price": 97.5,
+  "tax": 0.21
+}]
